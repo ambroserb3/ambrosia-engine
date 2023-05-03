@@ -1,8 +1,5 @@
-let lnStickyNavigation;
-
 $(document).ready(function () {
   applyHeader();
-  applyResize();
   checkBrowser();
   plusToggle();
 });
@@ -13,20 +10,10 @@ function applyHeader() {
   $(".jumbotron").css({ height: $(window).height() + "px" });
 }
 
-/* RESIZE FUNCTION */
-
-function applyResize() {
-  $(window).on("resize", function () {
-    lnStickyNavigation = $(".scroll-down").offset().top + 20;
-
-    $(".jumbotron").css({ height: $(window).height() + "px" });
-  });
-}
-
 /* IE7- FALLBACK FUNCTIONS */
 
 function checkBrowser() {
-  var loBrowserVersion = getBrowserAndVersion();
+  let loBrowserVersion = getBrowserAndVersion();
 
   if (loBrowserVersion.browser == "Explorer" && loBrowserVersion.version < 8) {
     $("#upgrade-dialog").modal({
@@ -83,8 +70,6 @@ function searchVersion(pstrDataString) {
     pstrDataString.substring(lnIndex + this.versionSearchString.length + 1)
   );
 }
-
-// groups dropdown
 
 function plusToggle() {
   $(".fa").click(function () {

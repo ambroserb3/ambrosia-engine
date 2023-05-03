@@ -63,7 +63,9 @@ if (typeof jQuery === "undefined") {
       called = true;
     });
     var callback = function () {
-      if (!called) $($el).trigger($.support.transition.end);
+      if (!called) {
+        $($el).trigger($.support.transition.end);
+      }
     };
     setTimeout(callback, duration);
     return this;
@@ -72,14 +74,17 @@ if (typeof jQuery === "undefined") {
   $(function () {
     $.support.transition = transitionEnd();
 
-    if (!$.support.transition) return;
+    if (!$.support.transition) {
+      return;
+    }
 
     $.event.special.bsTransitionEnd = {
       bindType: $.support.transition.end,
       delegateType: $.support.transition.end,
       handle: function (e) {
-        if ($(e.target).is(this))
+        if ($(e.target).is(this)) {
           return e.handleObj.handler.apply(this, arguments);
+        }
       },
     };
   });
@@ -119,7 +124,9 @@ if (typeof jQuery === "undefined") {
 
     var $parent = $(selector === "#" ? [] : selector);
 
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     if (!$parent.length) {
       $parent = $this.closest(".alert");
@@ -127,7 +134,9 @@ if (typeof jQuery === "undefined") {
 
     $parent.trigger((e = $.Event("close.bs.alert")));
 
-    if (e.isDefaultPrevented()) return;
+    if (e.isDefaultPrevented()) {
+      return;
+    }
 
     $parent.removeClass("in");
 
@@ -151,8 +160,12 @@ if (typeof jQuery === "undefined") {
       var $this = $(this);
       var data = $this.data("bs.alert");
 
-      if (!data) $this.data("bs.alert", (data = new Alert(this)));
-      if (typeof option == "string") data[option].call($this);
+      if (!data) {
+        $this.data("bs.alert", (data = new Alert(this)));
+      }
+      if (typeof option == "string") {
+        data[option].call($this);
+      }
     });
   }
 
@@ -209,7 +222,9 @@ if (typeof jQuery === "undefined") {
 
     state += "Text";
 
-    if (data.resetText == null) $el.data("resetText", $el[val]());
+    if (data.resetText == null) {
+      $el.data("resetText", $el[val]());
+    }
 
     // push to event loop to allow forms to submit
     setTimeout(
@@ -235,16 +250,21 @@ if (typeof jQuery === "undefined") {
     if ($parent.length) {
       var $input = this.$element.find("input");
       if ($input.prop("type") == "radio") {
-        if ($input.prop("checked")) changed = false;
+        if ($input.prop("checked")) {
+          changed = false;
+        }
         $parent.find(".active").removeClass("active");
         this.$element.addClass("active");
       } else if ($input.prop("type") == "checkbox") {
-        if ($input.prop("checked") !== this.$element.hasClass("active"))
+        if ($input.prop("checked") !== this.$element.hasClass("active")) {
           changed = false;
+        }
         this.$element.toggleClass("active");
       }
       $input.prop("checked", this.$element.hasClass("active"));
-      if (changed) $input.trigger("change");
+      if (changed) {
+        $input.trigger("change");
+      }
     } else {
       this.$element.attr("aria-pressed", !this.$element.hasClass("active"));
       this.$element.toggleClass("active");
@@ -260,10 +280,15 @@ if (typeof jQuery === "undefined") {
       var data = $this.data("bs.button");
       var options = typeof option == "object" && option;
 
-      if (!data) $this.data("bs.button", (data = new Button(this, options)));
+      if (!data) {
+        $this.data("bs.button", (data = new Button(this, options)));
+      }
 
-      if (option == "toggle") data.toggle();
-      else if (option) data.setState(option);
+      if (option == "toggle") {
+        data.toggle();
+      } else if (option) {
+               data.setState(option);
+             }
     });
   }
 
@@ -291,8 +316,11 @@ if (typeof jQuery === "undefined") {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault();
         // The target component still receive the focus
-        if ($btn.is("input,button")) $btn.trigger("focus");
-        else $btn.find("input:visible,button:visible").first().trigger("focus");
+        if ($btn.is("input,button")) {
+          $btn.trigger("focus");
+        } else {
+          $btn.find("input:visible,button:visible").first().trigger("focus");
+        }
       }
     })
     .on(
@@ -352,7 +380,9 @@ if (typeof jQuery === "undefined") {
   };
 
   Carousel.prototype.keydown = function (e) {
-    if (/input|textarea/i.test(e.target.tagName)) return;
+    if (/input|textarea/i.test(e.target.tagName)) {
+      return;
+    }
     switch (e.which) {
       case 37:
         this.prev();
@@ -392,7 +422,9 @@ if (typeof jQuery === "undefined") {
     var willWrap =
       (direction == "prev" && activeIndex === 0) ||
       (direction == "next" && activeIndex == this.$items.length - 1);
-    if (willWrap && !this.options.wrap) return active;
+    if (willWrap && !this.options.wrap) {
+      return active;
+    }
     var delta = direction == "prev" ? -1 : 1;
     var itemIndex = (activeIndex + delta) % this.$items.length;
     return this.$items.eq(itemIndex);
@@ -404,13 +436,18 @@ if (typeof jQuery === "undefined") {
       (this.$active = this.$element.find(".item.active"))
     );
 
-    if (pos > this.$items.length - 1 || pos < 0) return;
+    if (pos > this.$items.length - 1 || pos < 0) {
+      return;
+    }
 
-    if (this.sliding)
+    if (this.sliding) {
       return this.$element.one("slid.bs.carousel", function () {
-        that.to(pos);
-      }); // yes, "slid"
-    if (activeIndex == pos) return this.pause().cycle();
+            that.to(pos);
+          });
+    } // yes, "slid"
+    if (activeIndex == pos) {
+      return this.pause().cycle();
+    }
 
     return this.slide(pos > activeIndex ? "next" : "prev", this.$items.eq(pos));
   };
@@ -429,12 +466,16 @@ if (typeof jQuery === "undefined") {
   };
 
   Carousel.prototype.next = function () {
-    if (this.sliding) return;
+    if (this.sliding) {
+      return;
+    }
     return this.slide("next");
   };
 
   Carousel.prototype.prev = function () {
-    if (this.sliding) return;
+    if (this.sliding) {
+      return;
+    }
     return this.slide("prev");
   };
 
@@ -445,7 +486,9 @@ if (typeof jQuery === "undefined") {
     var direction = type == "next" ? "left" : "right";
     var that = this;
 
-    if ($next.hasClass("active")) return (this.sliding = false);
+    if ($next.hasClass("active")) {
+      return (this.sliding = false);
+    }
 
     var relatedTarget = $next[0];
     var slideEvent = $.Event("slide.bs.carousel", {
@@ -453,7 +496,9 @@ if (typeof jQuery === "undefined") {
       direction: direction,
     });
     this.$element.trigger(slideEvent);
-    if (slideEvent.isDefaultPrevented()) return;
+    if (slideEvent.isDefaultPrevented()) {
+      return;
+    }
 
     this.sliding = true;
 
@@ -513,11 +558,16 @@ if (typeof jQuery === "undefined") {
       );
       var action = typeof option == "string" ? option : options.slide;
 
-      if (!data)
+      if (!data) {
         $this.data("bs.carousel", (data = new Carousel(this, options)));
-      if (typeof option == "number") data.to(option);
-      else if (action) data[action]();
-      else if (options.interval) data.pause().cycle();
+      }
+      if (typeof option == "number") {
+        data.to(option);
+      } else if (action) {
+               data[action]();
+             } else if (options.interval) {
+                      data.pause().cycle();
+                    }
     });
   }
 
@@ -544,10 +594,14 @@ if (typeof jQuery === "undefined") {
       $this.attr("data-target") ||
         ((href = $this.attr("href")) && href.replace(/.*(?=#[^\s]+$)/, ""))
     ); // strip for ie7
-    if (!$target.hasClass("carousel")) return;
+    if (!$target.hasClass("carousel")) {
+      return;
+    }
     var options = $.extend({}, $target.data(), $this.data());
     var slideIndex = $this.attr("data-slide-to");
-    if (slideIndex) options.interval = false;
+    if (slideIndex) {
+      options.interval = false;
+    }
 
     Plugin.call($target, options);
 
@@ -605,7 +659,9 @@ if (typeof jQuery === "undefined") {
       this.addAriaAndCollapsedClass(this.$element, this.$trigger);
     }
 
-    if (this.options.toggle) this.toggle();
+    if (this.options.toggle) {
+      this.toggle();
+    }
   };
 
   Collapse.VERSION = "3.3.7";
@@ -622,7 +678,9 @@ if (typeof jQuery === "undefined") {
   };
 
   Collapse.prototype.show = function () {
-    if (this.transitioning || this.$element.hasClass("in")) return;
+    if (this.transitioning || this.$element.hasClass("in")) {
+      return;
+    }
 
     var activesData;
     var actives =
@@ -631,12 +689,16 @@ if (typeof jQuery === "undefined") {
 
     if (actives && actives.length) {
       activesData = actives.data("bs.collapse");
-      if (activesData && activesData.transitioning) return;
+      if (activesData && activesData.transitioning) {
+        return;
+      }
     }
 
     var startEvent = $.Event("show.bs.collapse");
     this.$element.trigger(startEvent);
-    if (startEvent.isDefaultPrevented()) return;
+    if (startEvent.isDefaultPrevented()) {
+      return;
+    }
 
     if (actives && actives.length) {
       Plugin.call(actives, "hide");
@@ -664,7 +726,9 @@ if (typeof jQuery === "undefined") {
       this.$element.trigger("shown.bs.collapse");
     };
 
-    if (!$.support.transition) return complete.call(this);
+    if (!$.support.transition) {
+      return complete.call(this);
+    }
 
     var scrollSize = $.camelCase(["scroll", dimension].join("-"));
 
@@ -675,11 +739,15 @@ if (typeof jQuery === "undefined") {
   };
 
   Collapse.prototype.hide = function () {
-    if (this.transitioning || !this.$element.hasClass("in")) return;
+    if (this.transitioning || !this.$element.hasClass("in")) {
+      return;
+    }
 
     var startEvent = $.Event("hide.bs.collapse");
     this.$element.trigger(startEvent);
-    if (startEvent.isDefaultPrevented()) return;
+    if (startEvent.isDefaultPrevented()) {
+      return;
+    }
 
     var dimension = this.dimension();
 
@@ -702,7 +770,9 @@ if (typeof jQuery === "undefined") {
         .trigger("hidden.bs.collapse");
     };
 
-    if (!$.support.transition) return complete.call(this);
+    if (!$.support.transition) {
+      return complete.call(this);
+    }
 
     this.$element[dimension](0)
       .one("bsTransitionEnd", $.proxy(complete, this))
@@ -760,11 +830,15 @@ if (typeof jQuery === "undefined") {
         typeof option == "object" && option
       );
 
-      if (!data && options.toggle && /show|hide/.test(option))
+      if (!data && options.toggle && /show|hide/.test(option)) {
         options.toggle = false;
-      if (!data)
+      }
+      if (!data) {
         $this.data("bs.collapse", (data = new Collapse(this, options)));
-      if (typeof option == "string") data[option]();
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -790,7 +864,9 @@ if (typeof jQuery === "undefined") {
     function (e) {
       var $this = $(this);
 
-      if (!$this.attr("data-target")) e.preventDefault();
+      if (!$this.attr("data-target")) {
+        e.preventDefault();
+      }
 
       var $target = getTargetFromTrigger($this);
       var data = $target.data("bs.collapse");
@@ -840,26 +916,31 @@ if (typeof jQuery === "undefined") {
   }
 
   function clearMenus(e) {
-    if (e && e.which === 3) return;
+    if (e && e.which === 3) {
+      return;
+    }
     $(backdrop).remove();
     $(toggle).each(function () {
       var $this = $(this);
       var $parent = getParent($this);
       var relatedTarget = { relatedTarget: this };
 
-      if (!$parent.hasClass("open")) return;
-
-      if (
-        e &&
-        e.type == "click" &&
-        /input|textarea/i.test(e.target.tagName) &&
-        $.contains($parent[0], e.target)
-      )
+      if (!$parent.hasClass("open")) {
         return;
+      }
+
+      if (e &&
+              e.type == "click" &&
+              /input|textarea/i.test(e.target.tagName) &&
+              $.contains($parent[0], e.target)) {
+        return;
+      }
 
       $parent.trigger((e = $.Event("hide.bs.dropdown", relatedTarget)));
 
-      if (e.isDefaultPrevented()) return;
+      if (e.isDefaultPrevented()) {
+        return;
+      }
 
       $this.attr("aria-expanded", "false");
       $parent
@@ -871,7 +952,9 @@ if (typeof jQuery === "undefined") {
   Dropdown.prototype.toggle = function (e) {
     var $this = $(this);
 
-    if ($this.is(".disabled, :disabled")) return;
+    if ($this.is(".disabled, :disabled")) {
+      return;
+    }
 
     var $parent = getParent($this);
     var isActive = $parent.hasClass("open");
@@ -893,7 +976,9 @@ if (typeof jQuery === "undefined") {
       var relatedTarget = { relatedTarget: this };
       $parent.trigger((e = $.Event("show.bs.dropdown", relatedTarget)));
 
-      if (e.isDefaultPrevented()) return;
+      if (e.isDefaultPrevented()) {
+        return;
+      }
 
       $this.trigger("focus").attr("aria-expanded", "true");
 
@@ -906,37 +991,48 @@ if (typeof jQuery === "undefined") {
   };
 
   Dropdown.prototype.keydown = function (e) {
-    if (
-      !/(38|40|27|32)/.test(e.which) ||
-      /input|textarea/i.test(e.target.tagName)
-    )
+    if (!/(38|40|27|32)/.test(e.which) ||
+          /input|textarea/i.test(e.target.tagName)) {
       return;
+    }
 
     var $this = $(this);
 
     e.preventDefault();
     e.stopPropagation();
 
-    if ($this.is(".disabled, :disabled")) return;
+    if ($this.is(".disabled, :disabled")) {
+      return;
+    }
 
     var $parent = getParent($this);
     var isActive = $parent.hasClass("open");
 
     if ((!isActive && e.which != 27) || (isActive && e.which == 27)) {
-      if (e.which == 27) $parent.find(toggle).trigger("focus");
+      if (e.which == 27) {
+        $parent.find(toggle).trigger("focus");
+      }
       return $this.trigger("click");
     }
 
     var desc = " li:not(.disabled):visible a";
     var $items = $parent.find(".dropdown-menu" + desc);
 
-    if (!$items.length) return;
+    if (!$items.length) {
+      return;
+    }
 
     var index = $items.index(e.target);
 
-    if (e.which == 38 && index > 0) index--; // up
-    if (e.which == 40 && index < $items.length - 1) index++; // down
-    if (!~index) index = 0;
+    if (e.which == 38 && index > 0) {
+      index--;
+    } // up
+    if (e.which == 40 && index < $items.length - 1) {
+      index++;
+    } // down
+    if (!~index) {
+      index = 0;
+    }
 
     $items.eq(index).trigger("focus");
   };
@@ -949,8 +1045,12 @@ if (typeof jQuery === "undefined") {
       var $this = $(this);
       var data = $this.data("bs.dropdown");
 
-      if (!data) $this.data("bs.dropdown", (data = new Dropdown(this)));
-      if (typeof option == "string") data[option].call($this);
+      if (!data) {
+        $this.data("bs.dropdown", (data = new Dropdown(this)));
+      }
+      if (typeof option == "string") {
+        data[option].call($this);
+      }
     });
   }
 
@@ -1040,7 +1140,9 @@ if (typeof jQuery === "undefined") {
 
     this.$element.trigger(e);
 
-    if (this.isShown || e.isDefaultPrevented()) return;
+    if (this.isShown || e.isDefaultPrevented()) {
+      return;
+    }
 
     this.isShown = true;
 
@@ -1059,7 +1161,9 @@ if (typeof jQuery === "undefined") {
 
     this.$dialog.on("mousedown.dismiss.bs.modal", function () {
       that.$element.one("mouseup.dismiss.bs.modal", function (e) {
-        if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true;
+        if ($(e.target).is(that.$element)) {
+          that.ignoreBackdropClick = true;
+        }
       });
     });
 
@@ -1095,13 +1199,17 @@ if (typeof jQuery === "undefined") {
   };
 
   Modal.prototype.hide = function (e) {
-    if (e) e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     e = $.Event("hide.bs.modal");
 
     this.$element.trigger(e);
 
-    if (!this.isShown || e.isDefaultPrevented()) return;
+    if (!this.isShown || e.isDefaultPrevented()) {
+      return;
+    }
 
     this.isShown = false;
 
@@ -1196,18 +1304,24 @@ if (typeof jQuery === "undefined") {
             this.ignoreBackdropClick = false;
             return;
           }
-          if (e.target !== e.currentTarget) return;
+          if (e.target !== e.currentTarget) {
+            return;
+          }
           this.options.backdrop == "static"
             ? this.$element[0].focus()
             : this.hide();
         }, this)
       );
 
-      if (doAnimate) this.$backdrop[0].offsetWidth; // force reflow
+      if (doAnimate) {
+        this.$backdrop[0].offsetWidth;
+      } // force reflow
 
       this.$backdrop.addClass("in");
 
-      if (!callback) return;
+      if (!callback) {
+        return;
+      }
 
       doAnimate
         ? this.$backdrop
@@ -1276,8 +1390,9 @@ if (typeof jQuery === "undefined") {
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt(this.$body.css("padding-right") || 0, 10);
     this.originalBodyPad = document.body.style.paddingRight || "";
-    if (this.bodyIsOverflowing)
+    if (this.bodyIsOverflowing) {
       this.$body.css("padding-right", bodyPad + this.scrollbarWidth);
+    }
   };
 
   Modal.prototype.resetScrollbar = function () {
@@ -1308,9 +1423,14 @@ if (typeof jQuery === "undefined") {
         typeof option == "object" && option
       );
 
-      if (!data) $this.data("bs.modal", (data = new Modal(this, options)));
-      if (typeof option == "string") data[option](_relatedTarget);
-      else if (options.show) data.show(_relatedTarget);
+      if (!data) {
+        $this.data("bs.modal", (data = new Modal(this, options)));
+      }
+      if (typeof option == "string") {
+        data[option](_relatedTarget);
+      } else if (options.show) {
+               data.show(_relatedTarget);
+             }
     });
   }
 
@@ -1348,10 +1468,14 @@ if (typeof jQuery === "undefined") {
             $this.data()
           );
 
-      if ($this.is("a")) e.preventDefault();
+      if ($this.is("a")) {
+        e.preventDefault();
+      }
 
       $target.one("show.bs.modal", function (showEvent) {
-        if (showEvent.isDefaultPrevented()) return; // only register focus restorer if modal will actually get shown
+        if (showEvent.isDefaultPrevented()) {
+          return;
+        } // only register focus restorer if modal will actually get shown
         $target.one("hidden.bs.modal", function () {
           $this.is(":visible") && $this.trigger("focus");
         });
@@ -1493,7 +1617,9 @@ if (typeof jQuery === "undefined") {
 
     this._options &&
       $.each(this._options, function (key, value) {
-        if (defaults[key] != value) options[key] = value;
+        if (defaults[key] != value) {
+          options[key] = value;
+        }
       });
 
     return options;
@@ -1523,16 +1649,22 @@ if (typeof jQuery === "undefined") {
 
     self.hoverState = "in";
 
-    if (!self.options.delay || !self.options.delay.show) return self.show();
+    if (!self.options.delay || !self.options.delay.show) {
+      return self.show();
+    }
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == "in") self.show();
+      if (self.hoverState == "in") {
+        self.show();
+      }
     }, self.options.delay.show);
   };
 
   Tooltip.prototype.isInStateTrue = function () {
     for (var key in this.inState) {
-      if (this.inState[key]) return true;
+      if (this.inState[key]) {
+        return true;
+      }
     }
 
     return false;
@@ -1553,16 +1685,22 @@ if (typeof jQuery === "undefined") {
       self.inState[obj.type == "focusout" ? "focus" : "hover"] = false;
     }
 
-    if (self.isInStateTrue()) return;
+    if (self.isInStateTrue()) {
+      return;
+    }
 
     clearTimeout(self.timeout);
 
     self.hoverState = "out";
 
-    if (!self.options.delay || !self.options.delay.hide) return self.hide();
+    if (!self.options.delay || !self.options.delay.hide) {
+      return self.hide();
+    }
 
     self.timeout = setTimeout(function () {
-      if (self.hoverState == "out") self.hide();
+      if (self.hoverState == "out") {
+        self.hide();
+      }
     }, self.options.delay.hide);
   };
 
@@ -1576,7 +1714,9 @@ if (typeof jQuery === "undefined") {
         this.$element[0].ownerDocument.documentElement,
         this.$element[0]
       );
-      if (e.isDefaultPrevented() || !inDom) return;
+      if (e.isDefaultPrevented() || !inDom) {
+        return;
+      }
       var that = this;
 
       var $tip = this.tip();
@@ -1587,7 +1727,9 @@ if (typeof jQuery === "undefined") {
       $tip.attr("id", tipId);
       this.$element.attr("aria-describedby", tipId);
 
-      if (this.options.animation) $tip.addClass("fade");
+      if (this.options.animation) {
+        $tip.addClass("fade");
+      }
 
       var placement =
         typeof this.options.placement == "function"
@@ -1596,7 +1738,9 @@ if (typeof jQuery === "undefined") {
 
       var autoToken = /\s?auto?\s?/i;
       var autoPlace = autoToken.test(placement);
-      if (autoPlace) placement = placement.replace(autoToken, "") || "top";
+      if (autoPlace) {
+        placement = placement.replace(autoToken, "") || "top";
+      }
 
       $tip
         .detach()
@@ -1647,7 +1791,9 @@ if (typeof jQuery === "undefined") {
         that.$element.trigger("shown.bs." + that.type);
         that.hoverState = null;
 
-        if (prevHoverState == "out") that.leave(that);
+        if (prevHoverState == "out") {
+          that.leave(that);
+        }
       };
 
       $.support.transition && this.$tip.hasClass("fade")
@@ -1668,8 +1814,12 @@ if (typeof jQuery === "undefined") {
     var marginLeft = parseInt($tip.css("margin-left"), 10);
 
     // we must check for NaN for ie 8/9
-    if (isNaN(marginTop)) marginTop = 0;
-    if (isNaN(marginLeft)) marginLeft = 0;
+    if (isNaN(marginTop)) {
+      marginTop = 0;
+    }
+    if (isNaN(marginLeft)) {
+      marginLeft = 0;
+    }
 
     offset.top += marginTop;
     offset.left += marginLeft;
@@ -1709,8 +1859,11 @@ if (typeof jQuery === "undefined") {
       actualHeight
     );
 
-    if (delta.left) offset.left += delta.left;
-    else offset.top += delta.top;
+    if (delta.left) {
+      offset.left += delta.left;
+    } else {
+      offset.top += delta.top;
+    }
 
     var isVertical = /top|bottom/.test(placement);
     var arrowDelta = isVertical
@@ -1742,7 +1895,9 @@ if (typeof jQuery === "undefined") {
     var e = $.Event("hide.bs." + this.type);
 
     function complete() {
-      if (that.hoverState != "in") $tip.detach();
+      if (that.hoverState != "in") {
+        $tip.detach();
+      }
       if (that.$element) {
         // TODO: Check whether guarding this code with this `if` is really necessary.
         that.$element
@@ -1754,7 +1909,9 @@ if (typeof jQuery === "undefined") {
 
     this.$element.trigger(e);
 
-    if (e.isDefaultPrevented()) return;
+    if (e.isDefaultPrevented()) {
+      return;
+    }
 
     $tip.removeClass("in");
 
@@ -1848,7 +2005,9 @@ if (typeof jQuery === "undefined") {
     actualHeight
   ) {
     var delta = { top: 0, left: 0 };
-    if (!this.$viewport) return delta;
+    if (!this.$viewport) {
+      return delta;
+    }
 
     var viewportPadding =
       (this.options.viewport && this.options.viewport.padding) || 0;
@@ -1898,8 +2057,9 @@ if (typeof jQuery === "undefined") {
   };
 
   Tooltip.prototype.getUID = function (prefix) {
-    do prefix += ~~(Math.random() * 1000000);
-    while (document.getElementById(prefix));
+    do {
+        prefix += ~~(Math.random() * 1000000);
+    } while (document.getElementById(prefix));
     return prefix;
   };
 
@@ -1944,8 +2104,11 @@ if (typeof jQuery === "undefined") {
 
     if (e) {
       self.inState.click = !self.inState.click;
-      if (self.isInStateTrue()) self.enter(self);
-      else self.leave(self);
+      if (self.isInStateTrue()) {
+        self.enter(self);
+      } else {
+        self.leave(self);
+      }
     } else {
       self.tip().hasClass("in") ? self.leave(self) : self.enter(self);
     }
@@ -1975,9 +2138,15 @@ if (typeof jQuery === "undefined") {
       var data = $this.data("bs.tooltip");
       var options = typeof option == "object" && option;
 
-      if (!data && /destroy|hide/.test(option)) return;
-      if (!data) $this.data("bs.tooltip", (data = new Tooltip(this, options)));
-      if (typeof option == "string") data[option]();
+      if (!data && /destroy|hide/.test(option)) {
+        return;
+      }
+      if (!data) {
+        $this.data("bs.tooltip", (data = new Tooltip(this, options)));
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -2013,7 +2182,9 @@ if (typeof jQuery === "undefined") {
     this.init("popover", element, options);
   };
 
-  if (!$.fn.tooltip) throw new Error("Popover requires tooltip.js");
+  if (!$.fn.tooltip) {
+    throw new Error("Popover requires tooltip.js");
+  }
 
   Popover.VERSION = "3.3.7";
 
@@ -2059,7 +2230,9 @@ if (typeof jQuery === "undefined") {
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
-    if (!$tip.find(".popover-title").html()) $tip.find(".popover-title").hide();
+    if (!$tip.find(".popover-title").html()) {
+      $tip.find(".popover-title").hide();
+    }
   };
 
   Popover.prototype.hasContent = function () {
@@ -2089,9 +2262,15 @@ if (typeof jQuery === "undefined") {
       var data = $this.data("bs.popover");
       var options = typeof option == "object" && option;
 
-      if (!data && /destroy|hide/.test(option)) return;
-      if (!data) $this.data("bs.popover", (data = new Popover(this, options)));
-      if (typeof option == "string") data[option]();
+      if (!data && /destroy|hide/.test(option)) {
+        return;
+      }
+      if (!data) {
+        $this.data("bs.popover", (data = new Popover(this, options)));
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -2265,9 +2444,12 @@ if (typeof jQuery === "undefined") {
       var data = $this.data("bs.scrollspy");
       var options = typeof option == "object" && option;
 
-      if (!data)
+      if (!data) {
         $this.data("bs.scrollspy", (data = new ScrollSpy(this, options)));
-      if (typeof option == "string") data[option]();
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -2329,7 +2511,9 @@ if (typeof jQuery === "undefined") {
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, ""); // strip for ie7
     }
 
-    if ($this.parent("li").hasClass("active")) return;
+    if ($this.parent("li").hasClass("active")) {
+      return;
+    }
 
     var $previous = $ul.find(".active:last a");
     var hideEvent = $.Event("hide.bs.tab", {
@@ -2342,8 +2526,9 @@ if (typeof jQuery === "undefined") {
     $previous.trigger(hideEvent);
     $this.trigger(showEvent);
 
-    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented())
+    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) {
       return;
+    }
 
     var $target = $(selector);
 
@@ -2418,8 +2603,12 @@ if (typeof jQuery === "undefined") {
       var $this = $(this);
       var data = $this.data("bs.tab");
 
-      if (!data) $this.data("bs.tab", (data = new Tab(this)));
-      if (typeof option == "string") data[option]();
+      if (!data) {
+        $this.data("bs.tab", (data = new Tab(this)));
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -2500,12 +2689,14 @@ if (typeof jQuery === "undefined") {
     var position = this.$element.offset();
     var targetHeight = this.$target.height();
 
-    if (offsetTop != null && this.affixed == "top")
+    if (offsetTop != null && this.affixed == "top") {
       return scrollTop < offsetTop ? "top" : false;
+    }
 
     if (this.affixed == "bottom") {
-      if (offsetTop != null)
+      if (offsetTop != null) {
         return scrollTop + this.unpin <= position.top ? false : "bottom";
+      }
       return scrollTop + targetHeight <= scrollHeight - offsetBottom
         ? false
         : "bottom";
@@ -2515,18 +2706,21 @@ if (typeof jQuery === "undefined") {
     var colliderTop = initializing ? scrollTop : position.top;
     var colliderHeight = initializing ? targetHeight : height;
 
-    if (offsetTop != null && scrollTop <= offsetTop) return "top";
-    if (
-      offsetBottom != null &&
-      colliderTop + colliderHeight >= scrollHeight - offsetBottom
-    )
+    if (offsetTop != null && scrollTop <= offsetTop) {
+      return "top";
+    }
+    if (offsetBottom != null &&
+          colliderTop + colliderHeight >= scrollHeight - offsetBottom) {
       return "bottom";
+    }
 
     return false;
   };
 
   Affix.prototype.getPinnedOffset = function () {
-    if (this.pinnedOffset) return this.pinnedOffset;
+    if (this.pinnedOffset) {
+      return this.pinnedOffset;
+    }
     this.$element.removeClass(Affix.RESET).addClass("affix");
     var scrollTop = this.$target.scrollTop();
     var position = this.$element.offset();
@@ -2538,7 +2732,9 @@ if (typeof jQuery === "undefined") {
   };
 
   Affix.prototype.checkPosition = function () {
-    if (!this.$element.is(":visible")) return;
+    if (!this.$element.is(":visible")) {
+      return;
+    }
 
     var height = this.$element.height();
     var offset = this.options.offset;
@@ -2549,22 +2745,31 @@ if (typeof jQuery === "undefined") {
       $(document.body).height()
     );
 
-    if (typeof offset != "object") offsetBottom = offsetTop = offset;
-    if (typeof offsetTop == "function") offsetTop = offset.top(this.$element);
-    if (typeof offsetBottom == "function")
+    if (typeof offset != "object") {
+      offsetBottom = offsetTop = offset;
+    }
+    if (typeof offsetTop == "function") {
+      offsetTop = offset.top(this.$element);
+    }
+    if (typeof offsetBottom == "function") {
       offsetBottom = offset.bottom(this.$element);
+    }
 
     var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
     if (this.affixed != affix) {
-      if (this.unpin != null) this.$element.css("top", "");
+      if (this.unpin != null) {
+        this.$element.css("top", "");
+      }
 
       var affixType = "affix" + (affix ? "-" + affix : "");
       var e = $.Event(affixType + ".bs.affix");
 
       this.$element.trigger(e);
 
-      if (e.isDefaultPrevented()) return;
+      if (e.isDefaultPrevented()) {
+        return;
+      }
 
       this.affixed = affix;
       this.unpin = affix == "bottom" ? this.getPinnedOffset() : null;
@@ -2591,8 +2796,12 @@ if (typeof jQuery === "undefined") {
       var data = $this.data("bs.affix");
       var options = typeof option == "object" && option;
 
-      if (!data) $this.data("bs.affix", (data = new Affix(this, options)));
-      if (typeof option == "string") data[option]();
+      if (!data) {
+        $this.data("bs.affix", (data = new Affix(this, options)));
+      }
+      if (typeof option == "string") {
+        data[option]();
+      }
     });
   }
 
@@ -2619,8 +2828,12 @@ if (typeof jQuery === "undefined") {
 
       data.offset = data.offset || {};
 
-      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom;
-      if (data.offsetTop != null) data.offset.top = data.offsetTop;
+      if (data.offsetBottom != null) {
+        data.offset.bottom = data.offsetBottom;
+      }
+      if (data.offsetTop != null) {
+        data.offset.top = data.offsetTop;
+      }
 
       Plugin.call($spy, data);
     });
