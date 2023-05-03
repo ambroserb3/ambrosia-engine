@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="content-script-type" content="text/javascript">
+	<meta http-equiv="content-style-type" content="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Stephan Brown">
+	<meta name="description" content="I&#39;m Stephan Brown, an engineer with a knack for all things tech.">
+	<meta name="keywords" content="Stephan Brown, Stephan, Brown, Interactive Resume, programmer, Web developer, 
+	Startup, Interactive CV, Resume, CV, Hireme, Ai, Developer, Stephan R. Brown, Ambrose Brown, NLP, Postgres, Heroku,
+	HRMatches, Algorithms, games, game design, Machine Learning, Yeet, MySQL, OOP, MLOps, Machine Learning Operations">
+	<meta name="robots" content="index, follow">
+	<meta name="revisit-after" content="10 days">
+	<title>Stephan Brown</title>
+    
+	<!-- Core JavaScript, jquery, and bootstrap -->
+	<script type=text/javascript src="scripts/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="scripts/script.js"></script>
+
+	<!-- Fonts Bootstrap, Core CSS, -->
+	<link href="stylesheets/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+	<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />
+    <script src="bootstrap/js/bootstrap.js"></script>
+
+
+</head>
+
+<!-- <div class="background-white"> -->
+<div class="container" id="profile">
+	<h2>Stephan (Ambrose) Brown</h2>
+
+	<p class="lead">Machine Learning Specialist</p>
+
+	<hr />
+	<div class="row">
+		<div class="col-md-6">
+		<p>I want to explore the frontiers of science and engineering to help make the world a better place.
+			 My greatest passions are technology, inclusion, and service. I specialize in MLOps as well as Natural Language Processing with deep learning models.
+			 I've been working full-time in ML for nearly 6 years. 
+			 I bring a diverse perspective with experience from many other domains such as game, web, VR/AR, and mobile development as well.
+		</p>
+		</div>
+
+		<div class="col-md-6 text-center"><img alt="Stephan" height="246" src="images/Selfie.png" width="246" /></div>
+	</div>
+</div>
+<!-- </div> -->
+
+
+<!-- skills and abilities -->
+<div class="background-purple">
+	<div class="container" id="abilities">
+		<h2>Skills</h2>
+
+		<p class="lead">&ldquo;Live as if your were to die tomorrow. Learn as if you were to live forever.&rdquo;<br />
+		- Gandhi</p>
+		<hr />
+		<div class="row">
+			<div id="skill-list">
+				<ul class="no-bullets">
+				
+
+					<li class="skill-dropdown" onclick="ExpandSkill('py')">
+						<span class="ability-title">Python</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="py">
+						<p> Python was actually the first language I learned back in middle school. Now I specialize in using it for 
+						data science and machine learning.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('mls')">
+							<span class="ability-title">Machine Learning</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>				
+							</span>
+						</li>
+	
+						<li class="skill-description" id="mls">
+							<p> I've been working Machine Learning for about 6 years now, and have several publications on the topic.
+							</p>
+						</li>
+						<li class="skill-dropdown" onclick="ExpandSkill('mlops')">
+							<span class="ability-title">MLOps</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span> 
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>				
+							</span>
+						</li>
+	
+						<li class="skill-description" id="mlops">
+							<p>I stay up to date on the latest research in MLOps, and emphasized building MLops infrastructure at Cream. 
+								At eBay, about 50% of my job was working on our MLops pipeline to automate model training, deployment, and the creation of
+								monitoring dashboards. At Interos, on the ML Platform team I was responsible for building and maintaining several of our platform
+								components.
+							</p>
+						</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('nlp')">
+								<span class="ability-title">Natural Language Processing</span>
+								<span class="ability-score">						
+								<span class="glyphicon glyphicon-star filled"></span>													
+								<span class="glyphicon glyphicon-star filled"></span>								
+								<span class="glyphicon glyphicon-star filled"></span>												
+								<span class="glyphicon glyphicon-star filled"></span>								
+								<span class="glyphicon glyphicon-star filled"></span>
+								<span>&nbsp;</span>
+								<span class="glyphicon glyphicon-plus"></span>			
+								</span>
+						</li>
+		
+						<li class="skill-description" id="nlp">
+								<p> I've built and worked with a handful of state of the art NLP pipelines.	</p>
+						</li>
+
+						<li class="skill-dropdown" onclick="ExpandSkill('k8s')">
+							<span class="ability-title">Docker and Kubernetes</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span> 
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>			
+							</span>
+						</li>
+	
+						<li class="skill-description" id="k8s">
+							<p>Containerization and Deployment is my bread and butter.
+							</p>
+						</li>
+
+						<li class="skill-dropdown" onclick="ExpandSkill('kubeflow')">
+							<span class="ability-title">Kubeflow</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star filled"></span>								
+							<span class="glyphicon glyphicon-star filled"></span>
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>			
+							</span>
+						</li>
+	
+						<li class="skill-description" id="kubeflow">
+							<p>Orchestration is key to automation. I have expertise both maintaining and using kubeflow</p>
+						</li>
+
+
+						
+					<li class="skill-dropdown" onclick="ExpandSkill('csharp')">
+						<span class="ability-title">C#</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+					
+					<li class="skill-description" id="csharp">
+						<p>C# is a very fun language for me, I used to use it often with Unity</p>
+					</li>
+
+
+					<li class="skill-dropdown" onclick="ExpandSkill('dataeng')">
+						<span class="ability-title">Data Engineering</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="dataeng">
+						<p> At AwareHealth and Cream, I had to build a significant amount of our infrastructure in the cloud, including 
+							building reliable, and scalable data pipelines, and establishing policies for data governance as well. In both
+							companies I focused on a lambda architecture using both batch and real-time processing.
+						</p>
+					</li>
+
+
+					<li class="skill-dropdown" onclick="ExpandSkill('web')">
+						<span class="ability-title">HTML/CSS/Javascript</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="web">
+						<p>Well, this website should speak for itself.</p>
+					</li>
+
+
+					<li class="skill-dropdown" onclick="ExpandSkill('agile')">
+						<span class="ability-title">Agile</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>				
+						</span>
+					</li>
+
+					<li class="skill-description" id="agile">
+						<p> I kanban like a boss! Always love to learn how other companies do agile. In terms of pm software aids, I love 
+							github projects the most, I also have used both trello and jira at various companies. 
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('vscode')">
+						<span class="ability-title">Visual Studio and VS Code</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="vscode">
+						<p>Visual Studio is my IDE of choice.
+							I used VS code as my text editor for this site actually.
+							Visual Studio has been the main IDE for most of my CS classes and projects thus far</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('cicd')">
+						<span class="ability-title">Continuous Integration and Deployment</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="cicd">
+						<p> Automate everything. GitOps is the way to go. I've used Gitlab Pipelines and Github Actions heavily for CI/CD. 
+							I've also used ArgoCD for GitOps.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('argocd')">
+						<span class="ability-title">ArgoCD</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>				
+						</span>
+					</li>
+
+					<li class="skill-description" id="argocd">
+						<p> Felt this needed emphasizing, GitOps is critical as a single source of truth for your infrastructure. 
+							ArgoCD is a great tool for this, and I've used it extensively.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('etl')">
+						<span class="ability-title">ETL Pipelines</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>	
+						</span>
+					</li>
+
+					<li class="skill-description" id="etl">
+						<p>Experience building/operating highly available, distributed systems of data extraction, 
+							transformation, and loading of large data sets.
+						</p>
+					</li>
+
+										
+					<li class="skill-dropdown" onclick="ExpandSkill('grafana')">
+						<span class="ability-title">Grafana and Prometheus</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>	
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="grafana">
+						<p>I spent a lot of time building dashboards with Sherlock (grafana) and prometheus to monitor the microservices I deployed 
+							from the Natural Language Processing team eBay.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('datadog')">
+						<span class="ability-title">Datadog</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="datadog">
+						<p>I spent a lot of time building dashboards with datadog to monitor the microservices I deployed in k8s.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('cplus')">
+						<span class="ability-title">C++</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="cplus">
+						<p>
+							I've used c++ in several unreal and cv projects, it was also the language I used most in school.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('sql')">
+						<span class="ability-title">SQL</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>				
+						</span>
+					</li>
+
+					<li class="skill-description" id="sql">
+						<p> I've used sql extensively with MySQL, Postgres, Amazon Aurora, Opensearch, and Redshift</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('unity')">
+						<span class="ability-title">Unity</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star "></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="unity">
+						<p>Videogames are a passion of mine, so I started using Unity to make games years ago.
+							Nothing beats a fun game jam with some close friends. I also used unity extensively in my VR 
+							research.
+						</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('graphql')">
+						<span class="ability-title">GraphQL</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>			
+						</span>
+					</li>
+
+					<li class="skill-description" id="graphql">
+						<p>I've been using graphql extensively at AwareHealth throughout our entire mobile app with Appsync</p>
+					</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('aws')">
+						<span class="ability-title">Amazon Web Services and GCP</span>
+						<span class="ability-score">						
+						<span class="glyphicon glyphicon-star filled"></span>													
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star filled"></span>												
+						<span class="glyphicon glyphicon-star filled"></span>								
+						<span class="glyphicon glyphicon-star"></span>	
+						<span>&nbsp;</span>
+						<span class="glyphicon glyphicon-plus"></span>		
+						</span>
+					</li>
+
+					<li class="skill-description" id="aws">
+						<p> Became a Sagemaker pro when I created an end-to-end machine learning and natural language understanding 
+						pipeline for news curation and classification, also great with Amplify, Cognito, 
+						Appsync, Lambda, EC2, S3, Kinesis, Athena, EKS, Neptune, Aurora, Redshift, Cloudwatch, and Cloudformation.
+						I've also used GCP heavily for research and personal projects.
+					</p>
+					</li>
+
+
+						<li class="skill-dropdown" onclick="ExpandSkill('spark')">
+							<span class="ability-title">PySpark</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>	
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star"></span>
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>
+							</span>
+						</li>
+	
+						<li class="skill-description" id="spark">
+							<p> I got pretty comfortable using PySpark when I need to work on ETL tasks at AwareHealth, Cream, and Interos.
+							</p>
+						</li>
+
+					<li class="skill-dropdown" onclick="ExpandSkill('hadoop')">
+							<span class="ability-title">Hadoop</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>	
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star"></span>												
+							<span class="glyphicon glyphicon-star"></span>	
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>																				
+							</span>
+						</li>
+	
+						<li class="skill-description" id="hadoop">
+							<p> I've been able to work with hadoop on a few different projects and I'm
+								familiar using them.
+							</p>
+						</li>
+
+						<li class="skill-dropdown" onclick="ExpandSkill('terraform')">
+							<span class="ability-title">Terraform</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>	
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star"></span>												
+							<span class="glyphicon glyphicon-star"></span>
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>																				
+							</span>
+						</li>
+	
+						<li class="skill-description" id="terraform">
+							<p> I've created and maintained terraform repos for spinning up AWS resources for various projects.
+							</p>
+						</li>
+
+						<li class="skill-dropdown" onclick="ExpandSkill('search')">
+							<span class="ability-title">Elasticsearch/Opensearch</span>
+							<span class="ability-score">						
+							<span class="glyphicon glyphicon-star filled"></span>													
+							<span class="glyphicon glyphicon-star filled"></span>	
+							<span class="glyphicon glyphicon-star filled"></span>												
+							<span class="glyphicon glyphicon-star"></span>												
+							<span class="glyphicon glyphicon-star"></span>
+							<span>&nbsp;</span>
+							<span class="glyphicon glyphicon-plus"></span>																			
+							</span>
+						</li>
+	
+						<li class="skill-description" id="search">
+							<p> I've deployed Elasticsearch / Opensearch clusters alongside ingestion tools like Logstash and Vector
+								for various projects and I'm familiar with the basics of the ELK stack.
+							</p>
+						</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- container end -->
+
+<!-- container exp -->
+<div>
+	<div class="container" id="experiences">
+		<h2>Experiences</h2>
+
+		<p class="lead">&ldquo;I do believe in the power of story.
+		 I believe that stories have an important role to
+		 play in the formation of human beings, that they can 
+		  stimulate, amaze and inspire their listeners. &rdquo;<br />
+	- Hayao Miyazaki</p>
+
+		<hr>
+		<h3>Education</h3>
+
+		<div class="exp">
+			<div class="row">
+				<div class="col-md-3 col-xs-12"> <img src="images/sclogo.jpeg" height="100px" width="100px" alt="schoolcraft college logo"></div>
+				<div class="col-md-8 col-xs-12">
+					<h4>Schoolcraft College</h4>
+					<p>Associates of Science</p>
+					<p>September 2014 - May 2017</p>
+				</div>
+			</div>		
+				<br>
+			<div class="row">
+				<div class="col-md-3 col-xs-12"> <img src="images/nyitlogo.png" height="100px" width="100px" alt="New York Institute of Tech logo"></div>
+				<div class="col-md-8 col-xs-12">
+					<h4>New York Institute of Technology</h4>
+					<p>Bachelors of Computer Science</p>
+					<p>September 2017 - December 2019</p>
+				</div>
+			</div>
+		</div>
+	
+		<hr />
+
+		<h3>Careers</h3>
+		<div class="exp">
+			<div>
+				<h4>Interos | Machine Learning Engineer (MLOps)</h4>
+					<p>August 2021 - Present</p>
+						<ul>
+							<li>Built and owned ML Platform components including a Boarding Pass for onboarding new models (primarily NLP) which reduced onboarding time for new projects from weeks to minutes using GitOps.</li>
+							<li>Coordinated efforts to engineer a data management system for versioning, uploading, and transforming training data and metadata in our S3 data lake using DVC, and Snowflake.</li>
+							<li>Supported ML Engineers by resolving support desk tickets to debug issues occurring in the Kubernetes cluster or with any of the ML platform-built components.</li>
+						</ul>
+			</div>
+	</div>
+		<div class="exp">
+			<div>
+				<h4>Cream | CTO</h4>
+					<p>July 2020 - July 2021</p>
+						<ul>
+							<li>Built a cloud infrastructure for our product ecosystem in AWS using Amazon EKS, EC2, Neptune, Kinesis, and SageMaker</li>
+							<li>Developed and maintained our Website and Mobile App for Android and iOS using React, and NextJS</li>
+							<li>Built an advanced NLP chatbot, using RASA with custom built ML models, and integrated into an API for our clients</li>
+						</ul>
+			</div>
+	</div>
+		<div class="exp">
+			<div>
+				<h4>eBay | Machine Learning Engineer</h4>
+					<p>July 2020 - April 2021</p>
+						<ul>
+							<li>Deploying machine learning applications with Kubernetes from the NLP team such as profanity, seller feedback, and spam detection</li>
+							<li>Creating MLops infrastructure enabling teams from across eBay to deploy machine learning applications faster at scale on Kubernetes</li>
+							<li>Worked on internal Python tools to automate various development processes for machine learning engineers and researchers</li>
+						</ul>
+			</div>
+	</div>
+		<div class="exp">
+				<div>
+					<h4>AwareHealth| Lead Full Stack Engineer</h4>
+						<p>January 2020 - July 2020</p>
+							<ul>
+								<li>Building our entire backend cloud infrastructure for mobile application beta with scale CI/CD in mind using AWS Amplify w React-native</li>
+								<li>Training and deploying experimental machine learning NLP models for moderation and mental health diagnostics from containers</li>
+								<li>Developing cloud infrastructure for ingestion and analysis of big data at scale from a data lake with Amazon S3, Kinesis, and Athena</li>
+							</ul>
+				</div>
+		</div>
+		<div class="exp">
+				<div>
+						<h4>New York Institue of Technology | Machine Learning and Virtual Reality Researcher</h4>
+		
+						<p>October 2017 - June 2020</p>
+							<ul>
+								<li>Built a VR application optimized for experiments to mitigate Virtual Reality Sickness</li>
+								<li>Designed a novel Python deep learning pipeline for adversarial text generation</li>
+								<li>Lead a team of my peers to accomplish engineering tasks and publish papers</li>
+							</ul>
+				</div>
+		</div>
+
+		<div class="exp">
+			<div>
+				<h4>Public Good Software | Machine Learning Engineer</h4>
+
+				<p>May 2019 - August 2019</p>
+					<ul>
+						<li>Built an end-to-end deep learning pipeline for content curation of news articles in connect to brand campaigns.</li>
+						<li>Implemented several deep learning models utilizing BERT and XLNET which achieved over 92% accuracy on NLP classification tasks.</li>
+						<li>Served the model into production on AWS Sagemaker.</li>
+					</ul>
+			</div>
+		</div>
+
+		<div class="exp">
+			<div>
+				<h4>Where Thoughts Go | Programmer</h4>
+
+				<p>Feb 2018 - August 2018</p>
+					<ul>
+						<li>Prototyping experimental features for an immersive Virtual Reality experience called “Where Thoughts Go” using C++ and Visual Studio</li>
+					</ul>
+			</div>
+		</div>
+ 
+		<hr>
+
+		<h3>Publications</h3>
+
+		<div class="exp">
+			<div>
+				<h4>Adversarial Text Generation for Google Perspective</h4>
+
+				<p>Abstract</p>
+				<p>With the preponderance of harassment and abuse, social media platforms and online discussion platforms seek to curb toxic comments. 
+				Google’s Perspective aims to help platforms classify toxic comments. We have created a pipeline to modify toxic comments to evade Perspective. 
+				This pipeline uses existing adversarial machine learning attacks to find the optimal perturbation which will evade the model. 
+				Since these attacks typically target images, as opposed to discrete text data, we include a process to generate text candidates from perturbed features and
+				select candidates to retain syntactic similarity. We demonstrated that using a model with just 10,000 queries, changing three words in 
+				each comment evades Perspective 25\% of the time, suggesting that building a 
+				surrogate model may not require many queries and a more robust approach is needed to improve the toxic comment classifier accuracy.</p>
+				<p>Presented at CSCI 2018</p>
+			</div>
+		</div>
+
+		<br>
+		<div class="exp">
+			<div>
+				<h4>Using Data Science to Facilitate Civic Action</h4>
+
+				<p>Abstract</p>
+				<p>Public Good Software (PGS) makes the news actionable: we connect readers, publishers, NGOs, and brands
+				 to address social causes, including the UN Sustainable Development Goals. The common element is news content, which 
+				 we analyze to pair a given article with a relevant social cause. In turn, we provide a set of actions readers can 
+				 take to help the cause. News content analysis is a labor-intensive process. We employ text-matching, natural 
+				 language processing, and machine learning to quickly and efﬁciently pair articles with relevant social causes.
+				  In this paper we describe the evolution of the PGS platform, which employs data science to facilitate civic action 
+				  and engagement.</p>
+
+				<p>Presented at Bloomberg Data for Good Exchange</p>
+			</div>
+		</div>
+
+		<div class="exp">
+				<div>
+					<h4>Acoustic and Visual Approaches to Adversarial Text Generation for Google Perspective</h4>
+	
+					<p>Abstract</p>
+					<p>Google's Perspective API was introduced to help detect and classify toxic comments in online platforms.
+						 Adversarial machine learning attacks can decrease the effectiveness of Perspective in identifying toxic comments. 
+						  We have shown in our previous study that by applying a semantic-based attack to a surrogate model trained with just 
+						  10,000 queries we could produce adversarial examples which evade Perspective 25% of the time.
+						In this paper, we propose two new approaches to generate adversarial text to evade Google's Perspective, 
+						   one based on acoustic similarity and the other based on visual similarity. We tested the success rate of obfuscation in 
+						   Google Perspective using the  adversarial texts generated through the proposed approaches and showed that Google Perspective
+						misclassified the generated texts 33% and 72.5% of the time for the visual-based and acoustic-based approaches, respectively. The study aims to broaden the understanding of adversarial text generation and to improve the robustness for online toxic comment detection for a safe online community. %We hope Google Perspective can train on the new adversarial samples 
+						produced within these attack scenarios in our optimized approach to further improve it's robustness. </p>
+	
+					<p>Presented at CSCI 2019</p>
+				</div>
+		</div>
+
+<!-- contact -->
+<div >
+	<div class="container" id="contact">
+	<h3>Contact</h3>
+
+	<!-- <p class="lead"></p> -->
+	<hr />
+		<div id="contactlist">
+			<span>
+				<a href="https://github.com/stephanrb3" target="_blank" style="float: left;">
+					<img id="linkedIn2" src="images/GitHub-Mark.png">
+						Github 
+				</a>	
+			</span>
+			<span>
+				<a href="https://www.linkedin.com/in/stephanrb3" target="_blank" style="padding-left: 10em;">
+						<img id="linkedIn2" src="images/Linkedin_Shiny_Icon.svg.png">
+						LinkedIn 
+				</a>	
+			</span>
+		</div>
+		<hr />	
+	</div>
+</div>
+
+<h6 style="text-align: center; color: white;">Copyright&copy;Stephan Brown 2023<h6></h6>
+</body>
+</html>
