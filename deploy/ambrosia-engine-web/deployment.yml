@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ambrosia-engine-web
+  namespace: ambrosia-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: ambrosia-engine-web
+  template:
+    metadata:
+      labels:
+        component: ambrosia-engine-web
+    spec:
+      serviceAccountName: default
+      containers:
+        - name: ambrosia-engine-web
+          image: europe-west1-docker.pkg.dev/ambrosia-engine/ambrosia-web/prod:0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http-web
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: 1m
+            requests:
+              memory: 1Gi
+              cpu: .5m

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ambrosia-engine-ingress
+  namespace: ambrosia-engine
+  annotations:
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.allow-http: "true"
+    kubernetes.io/ingress.global-static-ip-name: web-ip
+    networking.gke.io/managed-certificates: managed-cert
+spec:
+  rules:
+  - host: ambrosia-engine.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ambrosia-engine-service
+            port:
+              number: 8080

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ambrosia-engine-service
+  namespace: ambrosia-engine
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: NodePort
+  ports:
+    - name: http-web
+      port: 8080
+      targetPort: 80
+  selector:
+    component: ambrosia-engine-web
