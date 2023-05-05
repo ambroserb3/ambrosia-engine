@@ -1,0 +1,65 @@
+name: dev pipeline
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - '*'
+      - '!main'
+  push:
+    branches:
+      - '*'
+      - '!main'
+jobs: 
+#TODO add gcloud auth
+  version:
+    runs-on: ubuntu-latest
+    name: versioning
+    steps:
+    - name: Set the TAG
+      run: |
+        source /website/VERSION
+        echo "current version: $VERSION"
+        NEXTVERSION=$(echo $VERSION | awk -F. -v OFS=. '{$NF += 1 ; print}')
+        echo "TAG=$NEXTVERSION" >> "$GITHUB_ENV"
+  build:  
+    runs-on: ubuntu-latest
+    name: build dev image
+    needs: versioning
+    steps:
+      - name: Build
+        working-directory: ./website
+        run: |
+             echo "Building version ${{ TAG }} of the ambrosia-engine-web""
+             docker build -t europe-west1-docker.pkg.dev/ambrosia-engine/ambrosia-web/dev/${{ TAG }} .
+      - name: Push
+        run: |
+             echo "Pushing version ${{ TAG }}"
+             docker push europe-west1-docker.pkg.dev/ambrosia-engine/ambrosia-web/dev/${{ TAG }} 
+  update-deployment:
+    runs-on: ubuntu-latest
+    name: update dev deployment
+    needs: build
+    steps:
+      - name: update objects
+        uses: EndBug/add-and-commit@v9.1.2
+        with:
+          message: update deployment to use image ${{ TAG }} [skip actions]
+          committer_name: github-actions[bot]
+          default_author: github_actions
+        working-directory: ./deploy/ambrosia-engine-web-dev
+        run: |
+            cat deployment.yml
+            wget https://github.com/mikefarah/yq/releases/download/v4.19.1/yq_linux_amd64 -O yq && chmod +x yq
+            ./yq e -i '.spec.containers[0].image |= sub(":\d+.\d+.\d+", ":'"${{ TAG }}"'")' deployment.yml
+            cat deployment.yml
+      - name: apply config changes
+        run: |
+              echo "Applying config changes"
+              kubectl apply -f namespace.yml
+              kubectl apply -f deployment.yml
+              kubectl apply -f service.yml
+      - name: increment version file
+        run: |
+              echo "Incrementing version file"
+              echo "version=$NEXTVERSION" > /website/VERSION
+              cat ../website/VERSION
